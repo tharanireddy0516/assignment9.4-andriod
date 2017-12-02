@@ -27,15 +27,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         btn= findViewById(R.id.btn);
+        //registering button for context menu
         registerForContextMenu(btn);
     }
-    /*here i created onCreateContextMenu method*/
+    /*here i created onCreateContextMenu method*
+    A context menu is a floating menu that appears when we  performs a long-click on an element.
+    It provides actions that affect the selected content or context frame./
+     */
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
         //here we are adding menu
         //here using getters and setters
         menu.setHeaderTitle("Context menu");//setting the title
+        /*by using add method adding add,edit,delete actions*/
         menu.add(0,v.getId(),0,"Add");
         menu.add(0,v.getId(),0,"Edit");
         menu.add(0,v.getId(),0,"Delete");
@@ -43,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
-        //here we are applying condition for performing different different conditions
+        //here we are applying condition for performing different actions
         if (item.getTitle() == "Add") {//gets title
             Toast.makeText(this, "Add", Toast.LENGTH_LONG).show();//it will show the toast of add
             // LENGTH_LONG is the duration for which a toast is displayed on screen and duration which is 3,5 seconds
@@ -55,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
         return true;
-
+       //here boolean returns false if action was completed or else returns true
     }
 }
 
